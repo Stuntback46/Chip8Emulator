@@ -1,0 +1,26 @@
+* { padding: 0; ;
+ }
+
+canvas 
+{ 
+	background: #eee; 
+	display: block; 
+	margin: 0 auto;
+	background-color: black;
+	position: relative;
+    left: -1px;
+    top: 125px;
+
+
+}
+.screen
+{width: 659px;
+	height: 639px;
+background-image: url("../src/images/Cathodique.png");
+display: block;
+background-color: #3c1c21;
+
+}
+
+margin: 0 auto;
+	
