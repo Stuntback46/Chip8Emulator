@@ -1,0 +1,24 @@
+{
+  "name": "chip8emulator",
+  "version": "0.7.0",
+  "description": "Emulator Chip8 in Javascript",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stuntback46/Chip8Emulator.git"
+  },
+  "author": "Romain Cascaldo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Stuntback46/Chip8Emulator/issues"
+  },
+  "homepage": "https://github.com/Stuntback46/Chip8Emulator#readme",
+  "keywords": [
+    "Chip8",
+    "Emulator",
+    "Javascript"
+  ]
+}
