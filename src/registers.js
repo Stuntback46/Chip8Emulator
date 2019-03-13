@@ -10,14 +10,8 @@ registers = {
     },
     initI: function() {
     	this.I=0x0000;
-    	console.log("Vx initialized to:"+this.I);},
-    setVx: function(value,x){
-    this.Vx[x]=value;
-    },
-    setI: function(value){
-    this.I=value;
-    }
-
+    	console.log("Vx initialized to:"+this.I);}
+    
 }
 
 

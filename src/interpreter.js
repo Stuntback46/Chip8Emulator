@@ -16,20 +16,20 @@ function opcodeInterpreter(opcode) {
 
     } else if (opcode === 0x00EE) {
         //Returns from a subroutine.
-        point = point - 1;
+        callstack.stack = callstack.stack - 1;
         //stackPointer[point] = (stackPointer[point] - 2)
 
 
     } else if (((opcode) & (0xF000)) === (0x1000)) {
         //1NNN
         //Jumps to address NNN.
-        stackPointer[point] = (((opcode) & (0x0FFF)) - 2)
+        callstack.stackPointer[callstack.stack] = (((opcode) & (0x0FFF)) - 2)
 
     } else if (((opcode) & (0xF000)) === (0x2000)) {
         //2NNN
         //Calls subroutine at NNN.
-        point = point + 1;
-        stackPointer[point] = (((opcode) & (0x0FFF)) - 2)
+        callstack.stack = callstack.stack + 1;
+        callstack.stackPointer[callstack.stack] = (((opcode) & (0x0FFF)) - 2)
 
 
     } else if (((opcode) & (0xF000)) === (0x3000)) {
@@ -37,7 +37,7 @@ function opcodeInterpreter(opcode) {
         //Skips the next instruction if VX equals NN. 
         //(Usually the next instruction is a jump to skip a code block)
         if ((registers.Vx[x]) === ((opcode) & (0x00FF))) {
-            stackPointer[point] = stackPointer[point] + 2;
+            callstack.stackPointer[callstack.stack] = callstack.stackPointer[callstack.stack] + 2;
         }
 
     } else if (((opcode) & (0xF000)) === (0x4000)) {
@@ -45,7 +45,7 @@ function opcodeInterpreter(opcode) {
         //Skips the next instruction if VX doesn't equal NN. 
         //(Usually the next instruction is a jump to skip a code block)
         if ((registers.Vx[x]) !== ((opcode) & (0x00FF))) {
-            stackPointer[point] = stackPointer[point] + 2;
+            callstack.stackPointer[callstack.stack] = callstack.stackPointer[callstack.stack] + 2;
         }
 
 
@@ -54,7 +54,7 @@ function opcodeInterpreter(opcode) {
         //Skips the next instruction if VX equals VY. 
         //(Usually the next instruction is a jump to skip a code block)
         if (registers.Vx[x] === registers.Vx[y]) {
-            stackPointer[point] = stackPointer[point] + 2;
+            callstack.stackPointer[callstack.stack] = callstack.stackPointer[callstack.stack] + 2;
         }
     } else if (((opcode) & (0xF000)) === (0x6000)) {
         //6XNN
@@ -146,7 +146,7 @@ function opcodeInterpreter(opcode) {
         //Skips the next instruction if VX doesn't equal VY. 
         //(Usually the next instruction is a jump to skip a code block)
         if (registers.Vx[x] !== registers.Vx[y]) {
-            stackPointer[point] = stackPointer[point] + 2;
+            callstack.stackPointer[callstack.stack] = callstack.stackPointer[callstack.stack] + 2;
         }
 
 
@@ -158,7 +158,7 @@ function opcodeInterpreter(opcode) {
     } else if (((opcode) & (0xF000)) === (0xB000)) {
         //BNNN
         //Jumps to the address NNN plus V0.
-        stackPointer[point] = ((((opcode) & (0x0FFF)) + registers.Vx[0]) - 2)
+        callstack.stackPointer[callstack.stack] = ((((opcode) & (0x0FFF)) + registers.Vx[0]) - 2)
 
     } else if (((opcode) & (0xF000)) === (0xC000)) {
         //CXNN
@@ -181,7 +181,7 @@ function opcodeInterpreter(opcode) {
         //Skips the next instruction if the key stored in VX is pressed. 
         //(Usually the next instruction is a jump to skip a code block)
         if (registers.Vx[x] === keyPressed) {
-            stackPointer[point] = stackPointer[point] + 2
+            callstack.stackPointer[callstack.stack] = callstack.stackPointer[callstack.stack] + 2
         }
 
     } else if (((opcode) & (0xF0FF)) === (0XE0A1)) {
@@ -189,7 +189,7 @@ function opcodeInterpreter(opcode) {
         //Skips the next instruction if the key stored in VX isn't pressed. 
         //(Usually the next instruction is a jump to skip a code block)
         if (registers.Vx[x] !== keyPressed) {
-            stackPointer[point] = stackPointer[point] + 2
+            callstack.stackPointer[callstack.stack] = callstack.stackPointer[callstack.stack] + 2
         }
     } else if (((opcode) & (0xF0FF)) === (0xF007)) {
         //FX07
@@ -201,7 +201,7 @@ function opcodeInterpreter(opcode) {
         //A key press is awaited, and then stored in VX. 
         //(Blocking Operation. All instruction halted until next key event)
         if (keyPressed > 0xF) {
-            stackPointer[point] = stackPointer[point] - 2;
+            callstack.stackPointer[callstack.stack] = callstack.stack[callstack.stack] - 2;
         } else {
             registers.Vx[x] = keyPressed;
         }

@@ -1,3 +1,13 @@
+memory = {4};
+
+
+
+
+
+
+
+
+
 function memoryInit() {
 
     //For reminder: 0x000->0x1FF=Reserved for interpreter
