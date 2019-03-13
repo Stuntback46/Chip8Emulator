@@ -2,17 +2,22 @@ var callstack = {
     stackPointer: [0x200],
     stack: 0,
     execution: 10,
+    stopExecution:function(){clearInterval(cpuTimer);},
     pointer: function() {
-        console.log(callstack.stack);
-        let opcode = (memory[callstack.stackPointer[callstack.stack]]);
+        let opcode = (memory.ram[callstack.stackPointer[callstack.stack]]);
         opcode = (opcode << 8);
-        opcode = ((memory[callstack.stackPointer[callstack.stack] + 1]) + opcode);
+        opcode = ((memory.ram[callstack.stackPointer[callstack.stack] + 1]) + opcode);
+        if (Number.isNaN(opcode)){
+            callstack.stopExecution();
+            console.log("Opcode is not a Number");
+            return;
+        }
         opcodeInterpreter(opcode);
         callstack.stackPointer[callstack.stack] = callstack.stackPointer[callstack.stack] + 2;
         if ((callstack.stackPointer[callstack.stack] > ((0xFFF))) | (callstack.stackPointer[callstack.stack] < (0x200))) 
             {
         //stop all the timer when we point out of memory
-            clearInterval(cpuTimer);
+            callstack.stopExecution();
             }
         callstack.execution--;
         if (callstack.execution > 0) {

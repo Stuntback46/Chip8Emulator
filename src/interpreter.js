@@ -1,6 +1,6 @@
 
 function opcodeInterpreter(opcode) {
-
+    
     var x = ((opcode) & (0x0F00));
     x = x / 256;
     //used to determinate the value of x in Vx
@@ -246,20 +246,20 @@ function opcodeInterpreter(opcode) {
         //the tens digit at location I+1, and the ones digit at location I+2.)
         let moduloVxHundreds = registers.Vx[x] % 100;
         moduloVxHundreds = (registers.Vx[x] - moduloVxHundreds) / 100;
-        memory[I] = moduloVxHundreds;
+        memory.ram[I] = moduloVxHundreds;
         let moduloVxTens = ((registers.Vx[x]) - (moduloVxHundreds * 100)) % 10;
         moduloVxTens = (registers.Vx[x] - moduloVxTens - (moduloVxHundreds * 100)) / 10;
-        memory[I + 1] = moduloVxTens;
+        memory.ram[I + 1] = moduloVxTens;
         let moduloVx = ((registers.Vx[x]) - (moduloVxHundreds * 100) - (moduloVxTens * 10));
         moduloVx = moduloVx - (moduloVx % 1);
-        memory[I + 2] = moduloVx;
+        memory.ram[I + 2] = moduloVx;
 
     } else if (((opcode) & (0xF0FF)) === (0xF055)) {
         //FX55
         //Stores V0 to VX (including VX) in memory starting at address I. 
         //The offset from I is increased by 1 for each value written, but I itself is left unmodified.
         for (var i = 0; i <= x; i++) {
-            memory[I + i] = registers.Vx[i];
+            memory.ram[I + i] = registers.Vx[i];
         }
 
     } else if (((opcode) & (0xF0FF)) === (0xF065)) {
@@ -267,7 +267,7 @@ function opcodeInterpreter(opcode) {
         //Fills V0 to VX (including VX) with values from memory starting at address I.
         // The offset from I is increased by 1 for each value written, but I itself is left unmodified.
         for (var i = 0; i <= x; i++) {
-            registers.Vx[i] = memory[I + i];
+            registers.Vx[i] = memory.ram[I + i];
 
         }
     } else if (((opcode) & (0xF000)) === (0x0000)) {

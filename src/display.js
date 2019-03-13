@@ -1,13 +1,13 @@
    
     function screenDisplay(row, x, y, I) {
-        var sprite = memory[I];
+        var sprite = memory.ram[I];
         var result = 0;
         registers.Vx[(0xF)] = (0x00);
         var ox = 0;
         var oy = 0;
 
         for (var z = 0; z < row; z++) {
-            sprite = memory[I + z];
+            sprite = memory.ram[I + z];
 
             for (var i = 0; i < 8; i++) {
                 //used to manage if we try to draw a pixel out of screen     
