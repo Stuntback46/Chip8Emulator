@@ -7,24 +7,25 @@ var keyPressed = [0xFF];
 
 var chip8 =function() {
 
-var screen = new Array();
 
-memory.memoryInit();
-registers.initVx();
-registers.initI();
 
+memory= new memory(this);
+//registers= new registers;
+callstack = new callstack(this);
+registers = new registers(this);
+screen = new screen();
+timers= new timers();
 opcodeTest();
 
 timers.setDelayCounter(0);
 timers.setSoundCounter(0);
 
-screenInit();
 
 }
 
 chip8();
-
-var cpuTimer = setInterval(callstack.pointer, 15); // Cpu frequency = 500Hz 
-var frame = setInterval(render, 30);
+var context = this;
+var cpuTimer = setInterval(function(){return context.callstack.pointer();}, 15); // Cpu frequency = 500Hz 
+var frame = requestAnimationFrame(function(){return context.screen.render()});
 
     
