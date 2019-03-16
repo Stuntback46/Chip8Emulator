@@ -10,7 +10,7 @@ canvas
 	position: relative;
     left: -1px;
     top: 125px;
-
+    z-index: 10;
 
 }
 .screen
@@ -19,7 +19,7 @@ canvas
 background-image: url("../src/images/Cathodique.png");
 display: block;
 background-color: #3c1c21;
-
+z-index: -1;
 }
 
 margin: 0 auto;

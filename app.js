@@ -1,8 +1,11 @@
 
 var myScreen = document.getElementById("myScreen");
 var ctx = myScreen.getContext("2d");
-var audio = new Audio();
-audio.src = "../src/sounds/sound.mp3";
+var sound = new Tone.Oscillator(440, "sine").toMaster();
+
+
+//var audio = new Audio();
+//audio.src = "../src/sounds/sound.mp3";
 var keyPressed = [0xFF];
 
 var chip8 =function() {
@@ -10,7 +13,6 @@ var chip8 =function() {
 
 
 memory= new memory(this);
-//registers= new registers;
 callstack = new callstack(this);
 registers = new registers(this);
 screen = new screen();

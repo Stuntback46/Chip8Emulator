@@ -215,7 +215,8 @@ function opcodeInterpreter(opcode) {
         //FX18
         //Sets the sound timer to VX.
         timers.soundCounter = registers.Vx[x];
-        audio.play();
+        timers.sound = true;
+        sound.start();
     } else if (((opcode) & (0xF0FF)) === (0xF01E)) {
         //FX1E
         //Adds VX to I.
@@ -232,7 +233,7 @@ function opcodeInterpreter(opcode) {
         //FX29
         //Sets I to the location of the sprite for the character in VX. 
         //Characters 0-F (in hexadecimal) are represented by a 4x5 font.
-        registers.I = characterAddress[Vx[x]];
+        registers.I = [registers.Vx[x]]*5;
         //screenDisplay(n, Vx[x], Vx[y], I);
 
     } else if (((opcode) & (0xF0FF)) === (0xF033)) {

@@ -2,6 +2,7 @@ var timers = (function(){
     var timers = function(){
     this.delayCounter= 0;
     this.soundCounter= 0;
+    this.sound= false;
     }
     timers.prototype.setDelayCounter=function(value){this.delayCounter=value;}
     timers.prototype.setSoundCounter=function(value) {this.soundCounter=value;}
@@ -16,8 +17,10 @@ var timers = (function(){
 timers.prototype.ticSoundTimer=function() {
           if (this.soundCounter !== 0) {
             this.soundCounter = (this.soundCounter - 1);
-        } else {
-            audio.pause();
+        } else if ((this.sound===true) && (this.soundCounter === 0) ) 
+        {
+            sound.stop();
+            this.sound= false;
         }
     }
 return timers;
