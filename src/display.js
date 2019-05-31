@@ -1,11 +1,11 @@
-var screen = (function(){
+var screenChip8 = (function(){
 
-function screen(){
+function screenChip8(){
 this.onScreen = new Array();
 this.init();
 }
 
-screen.prototype.display=function (row, x, y, I)
+screenChip8.prototype.display=function (row, x, y, I)
 {
 
 var sprite = memory.ram[I];
@@ -41,7 +41,7 @@ let oy = 0;
         //reads the screen memory and display the pixel on screen
 }
 
-screen.prototype.render = function() {
+screenChip8.prototype.render = function() {
         ctx.clearRect(0, 0, 512, 256);
         for (var i = 0; i < 32; i++) {
             for (var j = 0; j < 64; j++) {
@@ -57,7 +57,7 @@ screen.prototype.render = function() {
         frame = requestAnimationFrame(function(){return window.screen.render()});
     }
 
-screen.prototype.init = function() { //used to initialize the real screen and the screen memory
+screenChip8.prototype.init = function() { //used to initialize the real screen and the screen memory
         ctx.clearRect(0, 0, 512, 256);
         for (var i = 0; i < 32; i++) {
             this.onScreen[i] = new Array();
@@ -71,6 +71,6 @@ screen.prototype.init = function() { //used to initialize the real screen and th
         }
         console.log("Screen Initialized")
     }
-     return screen;
+     return screenChip8;
 })();
        

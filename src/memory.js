@@ -1,5 +1,5 @@
-var memory = (function(){
-    var memory = function(){
+var memoryChip8 = (function(){
+    var memoryChip8 = function(){
 
          //For reminder: 0x000->0x1FF=Reserved for interpreter
     //0x200->0x5FF= Most programs start here
@@ -10,6 +10,7 @@ var memory = (function(){
 
     //0x000 to 0x04F (5 bytes by character)
     this.ram=[];
+    this.test=2;
     for (let i = 0x00; i <= 0xFFF; i++) {
         this.ram[i] = 0x00;
     }
@@ -44,5 +45,5 @@ var memory = (function(){
 
  
     
-return memory;
+return memoryChip8;
 })();

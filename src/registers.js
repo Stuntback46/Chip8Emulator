@@ -1,5 +1,5 @@
-var registers = (function(){
-var registers = function(){
+var registersChip8 = (function(){
+var registersChip8 = function(){
 this.Vx=[];  
 for (var i = 0; i <= (0xF); i++) 
         {
@@ -9,6 +9,6 @@ for (var i = 0; i <= (0xF); i++)
 this.I=0x0000;
 console.log("I initialized to: "+ this.I);
 };
-return registers;
+return registersChip8;
 })();
 

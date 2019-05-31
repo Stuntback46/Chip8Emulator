@@ -1,8 +1,27 @@
+let key = document.getElementById("key"); 
+
 document.addEventListener("keydown", keyDownHandler);
 document.addEventListener("keyup", keyUpHandler);
+key.addEventListener("mousedown",keyDownHandler);
+key.addEventListener("mouseup",keyUpHandler);
+
+document.addEventListener("touchstart",detectTouch);
+function detectTouch(){
+    console.log("touch detected");
+    document.removeEventListener("touchstart", detectTouch);
+    key.removeEventListener("mousedown", keyDownHandler);
+    key.removeEventListener("mouseup", keyUpHandler);
+    key.addEventListener("touchstart",keyDownHandler);
+    key.addEventListener("touchend",keyUpHandler);
+}
+
 
 function keyUpHandler(e) {
-        e.keyCode;
+    
+         if(e.target.id){
+        (e.keyCode)=parseInt(e.target.id);
+    }
+    console.log(e.keyCode,"up");
         switch (e.keyCode) {
             case 49:
                 keyPressed = 0xFF;
@@ -58,6 +77,10 @@ function keyUpHandler(e) {
     }
 
     function keyDownHandler(e) {
+        if(e.target.id){
+        (e.keyCode)=parseInt(e.target.id);
+    }
+    console.log(e.keyCode,"down");
         switch (e.keyCode) {
             case 49:
                 keyPressed = 0x1;

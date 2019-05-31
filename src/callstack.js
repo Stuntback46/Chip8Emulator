@@ -1,18 +1,18 @@
-var callstack = (function(){
-    function callstack(){
+var callstackChip8 = (function(){
+    function callstackChip8(){
     this.stackPointer= [0x200];
     this.pileStack= 0;
     this.execution= 10;
     console.log(this);
     }
-    callstack.prototype.stopExecution= function(){
+    callstackChip8.prototype.stopExecution= function(){
         clearInterval(cpuTimer);
-        screen.render();
+        //screen.render();
         window.cancelAnimationFrame(frame)
         return;
     }
     
-    callstack.prototype.pointer= function(){
+    callstackChip8.prototype.pointer= function(){
         let opcode = (memory.ram[this.stackPointer[this.pileStack]]);
         opcode = (opcode << 8);
         opcode = ((memory.ram[this.stackPointer[this.pileStack] + 1]) + opcode);
@@ -38,5 +38,5 @@ var callstack = (function(){
             timers.ticDelayTimer();
         }
     }
-    return callstack;
+    return callstackChip8;
 })();

@@ -1,12 +1,12 @@
-var timers = (function(){
-    var timers = function(){
+var timersChip8 = (function(){
+    var timersChip8 = function(){
     this.delayCounter= 0;
     this.soundCounter= 0;
     this.sound= false;
     }
-    timers.prototype.setDelayCounter=function(value){this.delayCounter=value;}
-    timers.prototype.setSoundCounter=function(value) {this.soundCounter=value;}
-    timers.prototype.ticDelayTimer=function() {
+    timersChip8.prototype.setDelayCounter=function(value){this.delayCounter=value;}
+    timersChip8.prototype.setSoundCounter=function(value) {this.soundCounter=value;}
+    timersChip8.prototype.ticDelayTimer=function() {
 
         if (this.delayCounter !== 0) {
             this.delayCounter = (this.delayCounter - 1);
@@ -14,7 +14,7 @@ var timers = (function(){
         this.ticSoundTimer();
 
     }
-timers.prototype.ticSoundTimer=function() {
+timersChip8.prototype.ticSoundTimer=function() {
           if (this.soundCounter !== 0) {
             this.soundCounter = (this.soundCounter - 1);
         } else if ((this.sound===true) && (this.soundCounter === 0) ) 
@@ -23,6 +23,6 @@ timers.prototype.ticSoundTimer=function() {
             this.sound= false;
         }
     }
-return timers;
+return timersChip8;
 })();
  

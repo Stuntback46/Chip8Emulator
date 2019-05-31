@@ -1,4 +1,5 @@
-* { padding: 0; ;
+* { padding: 0;
+	touch-action: manipulation;
  }
 
 canvas 
@@ -22,5 +23,38 @@ background-color: #3c1c21;
 z-index: -1;
 }
 
-margin: 0 auto;
+.keyboard{
+  width:659px; height: 328px;
+  background-color: #111;
+  margin-left: 0px;
+  border-radius: 9px;
+  color: #eee;
+  display:flex;
+ -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Chrome/Safari/Opera */
+  -khtml-user-select: none; /* Konqueror */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Trop récent, mais dans le futur, il seras universel, donc gardez le en poche */ 
+  
+}
+.key{
+  width: 155px; height:80px;
+  display:block;
+  background-color:#3a1c21;
+  text-align: left;
+  padding-left: 8px;
+  line-height: 29px;
+  border-radius:2px;
+  float:left; margin-left: 2px;
+  margin-bottom:2px;
+  cursor: pointer;
+  transition: box-shadow 0.7s ease;
+  user-select: none;
+}
+
+.key{text-align: center; padding-left: 7px; margin-left:2px;
+ }
+
+.key:hover{box-shadow:0px 0px 10px #14B524; z-index:1000;}
 	

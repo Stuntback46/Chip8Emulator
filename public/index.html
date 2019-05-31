@@ -4,13 +4,99 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="index.css">
     <title>Gamedev Canvas Workshop</title>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 </head>
 <body>
 <div class = "screen" width ="659" height="639">
 	
 <canvas id="myScreen" width="512" height="256"></canvas>
+
+</div>
+<div class="keyboard">
+  
+
+  <div id="key">
+ 
+   
+  
+  <div class="key letter" id="49">
+    1
+  </div>
+    <div class="key letter" id="50">
+    2
+  </div>
+    <div class="key letter" id="51">
+    3
+  </div>
+    <div class="key letter" id="52">
+    C
+  </div>
+    <div class="key letter" id="65">
+    4
+  </div>
+    <div class="key letter" id="90">
+    5
+  </div>
+    <div class="key letter" id="69">
+    6
+  </div>
+    <div class="key letter" id="82">
+    D
+  </div>
+    <div class="key letter" id="81">
+    7
+  </div>
+    <div class="key letter" id="83">
+    8
+  </div>
+   <div class="key letter" id="68">
+    9
+  </div>
+     <div class="key letter" id="70">
+    E
+  </div>
+     <div class="key letter" id="87">
+    A
+  </div>
+     <div class="key letter" id="88">
+    0
+  </div>
+     <div class="key letter" id="67">
+    B
+  </div>
+     <div class="key letter" id="86">
+    F
+  </div>
+     
+  </div><!-- end section-b-->
+  
+</div>
+
+<div class="rom_selection">
+<input type="file" onchange="onChange(event)">
+<select name="romslist" form="romslist" onchange="onChangeDropBox(event)">
+  <option value=""></option>
+  <option value="INVADERS">Invaders</option>
+  <option value="15PUZZLE">15Puzzle</option>
+  <option value="BLITZ">Blitz</option>
+  <option value="CONNECT4">Connect4</option>
+  <option value="GUESS">Guess</option>
+  <option value="HIDDEN">Hidden</option>
+  <option value="KALEID">Kaleid</option>
+  <option value="MAZE">Maze</option>
+  <option value="MERLIN">Merlin</option>
+  <option value="MISSILE">Missile</option>
+  <option value="PONG">Pong</option>
+  <option value="PONG2">Pong 2</option>
+  <option value="PUZZLE">Puzzle</option>
+  <option value="SYZYGY">SYZYGY</option>
+  <option value="TANK">Tank</option>
+  
+</select>
+</div>
+<script>"use strict";</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.8.2/Tone.min.js"></script>
+<script src="../src/clock.js"></script>
 <script src="../src/display.js"></script>
 <script src="../src/interpreter.js"></script>
 <script src="../src/keyboard.js"></script>
@@ -19,8 +105,6 @@
 <script src="../src/callstack.js"></script>
 <script src="../src/registers.js"></script>
 <script src="../src/timers.js"></script>
-
 <script src="../app.js"></script>
-</div>
 </body>
 </html>
